@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DATE=$(date +%Y-%m-%d)
+tar --ignore-failed-read --exclude=/home/lost+found --exclude=/home/[^/]*/.python_history -cvpjf - /home | ssh root@storage.local "cat > /root/backups/home/home_${DATE}.tar.bz2"
+ssh root@storage.local "if [ -f /root/backups/home/home.tar.bz2 ]; then rm /root/backups/home/home.tar.bz2; fi"
+ssh root@storage.local "ln -s /root/backups/home/home_${DATE}.tar.bz2 /root/backups/home/home.tar.bz2"
+
+#FILES=$(ls -1q /mnt/backup/home/* | wc -l)
+#if [[ $FILES -gt 4 ]]; then
+#    OVER=$(( $FILES - 4  ))    
+#    ls -1t -d /mnt/backup/home/* | tail -$OVER | xargs rm
+#fi
