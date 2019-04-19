@@ -1,4 +1,12 @@
-set nu
+" Solarized theme
+set background=dark
+let g:solarized_termcolors=256
+let g:solarized_degrade=1
+let g:solarized_termtrans=1
+colorscheme solarized
+
+" Personalize
+set number relativenumber
 syntax on
 inoremap jj <Esc>
 nnoremap JJJJ <Nop>
@@ -10,4 +18,8 @@ set expandtab
 imap <S-Tab> <C-o><<
 cmap :w!! %!sudo tee > /dev/null %
 set pastetoggle=<F2>
-set cc=81
+set colorcolumn=81
+highlight ColorColumn ctermbg=grey
+highlight OverLength ctermbg=red ctermfg=white
+match OverLength /\%81v.\+/
+highlight LineNr ctermbg=NONE
