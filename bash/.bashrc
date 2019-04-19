@@ -9,11 +9,9 @@ alias svim="sudo vim"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias apachelog='tail /var/log/apache2/error.log'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -25,6 +23,11 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+fi
+
+export EDITOR=vim
+if [ $TERM == "screen" ]; then
+    export TERM=screen-256color
 fi
 
 C="\[\033["
