@@ -5,21 +5,69 @@ let g:solarized_degrade=1
 let g:solarized_termtrans=1
 colorscheme solarized
 
-" Personalize
+" Personalize appearance
+syntax enable
 set number relativenumber
-syntax on
-inoremap jj <Esc>
-nnoremap JJJJ <Nop>
-set showmatch matchtime=2
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
-imap <S-Tab> <C-o><<
-cmap :w!! %!sudo tee > /dev/null %
-set pastetoggle=<F2>
 set colorcolumn=81
 highlight ColorColumn ctermbg=grey
 highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%81v.\+/
 highlight LineNr ctermbg=NONE
+
+" Change behaviors
+set encoding=utf-8
+set smartindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set showmatch matchtime=2
+"set directory=~/.vim/swap
+"set wildmode=list:full
+set wildignore=*.swp,*.bak
+set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache
+set wildignore+=*.dll,*.pdb,*.min.*,*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+set wildignore+=tags
+set wildignore+=*.tar.*
+set wildignorecase
+set foldmethod=indent
+set foldnestmax=10
+
+" Disable Behavior
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+nnoremap <F1> <Nop>
+
+" Remap Keys
+let mapleader = " "
+set spell
+set spelllang=en_us
+set path=.,**
+set pastetoggle=<F2>
+set wildcharm=<C-z>
+cmap :w!! %!sudo tee > /dev/null %
+imap <S-Tab> <C-o><<
+inoremap jj <Esc>
+nnoremap JJJJ <Nop> 
+nnoremap ii <C-i>
+nnoremap oo <C-o>
+nnoremap gb :bnext<CR>
+nnoremap gB :bprevious<CR>
+nnoremap <leader>l :ls<CR>:b<Space>
+nnoremap <leader>b :buffer <C-z><S-Tab>
+nnoremap <leader>B :sbuffer <C-z><S-Tab>
+nnoremap <leader>f :find *
+nnoremap <leader>s :sfind *
+nnoremap <leader>v :vert sfind *
+nnoremap <leader>t :tabfind *
+nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
+nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
+nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
+nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
+nnoremap <leader>c :nohlsearch<CR><Esc>
+nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
+
+" Automatic Commands
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
