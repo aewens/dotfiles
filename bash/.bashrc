@@ -34,4 +34,8 @@ C="\[\033["
 N="${C}m\]"
 
 export PS1="${C}0;97m\]\u@\h :: [ ${C}1;36m\]\w${C}0;97m\] ]\n\$ ${N}"
-export PATH=$PATH:$HOME/.bin
+export PATH=$HOME/.bin:$PATH
+
+if [ -f ~/.bashrc.local ]; then
+    . ~/.bashrc.local
+fi
