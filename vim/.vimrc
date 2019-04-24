@@ -29,7 +29,7 @@ set wildignore+=*.dll,*.pdb,*.min.*,*/.git/**/*,*/.hg/**/*,*/.svn/**/*
 set wildignore+=tags
 set wildignore+=*.tar.*
 set wildignorecase
-set foldmethod=indent
+"set foldmethod=indent
 set foldnestmax=10
 
 " Disable Behavior
@@ -37,6 +37,10 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
 nnoremap <F1> <Nop>
 
 " Remap Keys
@@ -66,8 +70,9 @@ nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>c :nohlsearch<CR><Esc>
-nnoremap <silent> <Esc> :nohlsearch<CR><Esc>
+nnoremap <leader>o :set foldmethod=indent<CR>zM
+nnoremap <leader>O :set foldmethod=manual<CR>zR
 
 " Automatic Commands
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+"autocmd BufWinLeave *.* mkview
+"autocmd BufWinEnter *.* silent loadview
