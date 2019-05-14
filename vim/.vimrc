@@ -15,6 +15,7 @@ match OverLength /\%81v.\+/
 highlight LineNr ctermbg=NONE
 
 " Change behaviors
+filetype plugin on
 set encoding=utf-8
 set smartindent
 set expandtab
@@ -22,7 +23,7 @@ set tabstop=4
 set shiftwidth=4
 set showmatch matchtime=2
 "set directory=~/.vim/swap
-"set wildmode=list:full
+set wildmode=list:full
 set wildignore=*.swp,*.bak
 set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache
 set wildignore+=*.dll,*.pdb,*.min.*,*/.git/**/*,*/.hg/**/*,*/.svn/**/*
@@ -59,6 +60,8 @@ nnoremap oo <C-o>
 nnoremap gb :bnext<CR>
 nnoremap gB :bprevious<CR>
 nnoremap <leader>l :ls<CR>:b<Space>
+nnoremap <leader>L :b#<CR>
+nnoremap <leader>w :bd<CR>
 nnoremap <leader>b :buffer <C-z><S-Tab>
 nnoremap <leader>B :sbuffer <C-z><S-Tab>
 nnoremap <leader>f :find *
@@ -72,6 +75,7 @@ nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>c :nohlsearch<CR><Esc>
 nnoremap <leader>o :set foldmethod=indent<CR>zM
 nnoremap <leader>O :set foldmethod=manual<CR>zR
+nnoremap <leader>X <ESC>:w<CR>:silent :!%:p<CR><CR>
 
 " Automatic Commands
 "autocmd BufWinLeave *.* mkview
