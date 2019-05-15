@@ -76,6 +76,7 @@ nnoremap <leader>c :nohlsearch<CR><Esc>
 nnoremap <leader>o :set foldmethod=indent<CR>zM
 nnoremap <leader>O :set foldmethod=manual<CR>zR
 nnoremap <leader>X <ESC>:w<CR>:silent :!%:p<CR><CR>
+nnoremap <leader>n :set number! relativenumber!<CR>
 
 " Automatic Commands
 "autocmd BufWinLeave *.* mkview
