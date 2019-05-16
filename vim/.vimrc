@@ -32,6 +32,8 @@ set wildignore+=*.tar.*
 set wildignorecase
 "set foldmethod=indent
 set foldnestmax=10
+set showbreak=↪
+set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 " Disable Behavior
 noremap <Up> <Nop>
@@ -54,7 +56,7 @@ set wildcharm=<C-z>
 cmap :w!! %!sudo tee > /dev/null %
 imap <S-Tab> <C-o><<
 inoremap jj <Esc>
-nnoremap JJJJ <Nop> 
+nnoremap JJJJ <Nop>
 nnoremap ii <C-i>
 nnoremap oo <C-o>
 nnoremap gb :bnext<CR>
