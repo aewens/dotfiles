@@ -53,6 +53,12 @@ set pastetoggle=<F2>
 set wildcharm=<C-z>
 cmap :w!! %!sudo tee > /dev/null %
 imap <S-Tab> <C-o><<
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+inoremap {} {}
+inoremap [] []
+inoremap () ()
 inoremap jj <Esc>
 nnoremap JJJJ <Nop> 
 nnoremap ii <C-i>
@@ -79,5 +85,7 @@ nnoremap <leader>X <ESC>:w<CR>:silent :!%:p<CR><CR>
 nnoremap <leader>n :set number! relativenumber!<CR>
 
 " Automatic Commands
+autocmd! BufRead,BufNewFile *.{jsx,jx} setlocal filetype=jsx
+autocmd FileType html,jsx set omnifunc=htmlcomplete#CompleteTags
 "autocmd BufWinLeave *.* mkview
 "autocmd BufWinEnter *.* silent loadview
