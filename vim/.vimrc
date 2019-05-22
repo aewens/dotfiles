@@ -55,6 +55,7 @@ set pastetoggle=<F2>
 set wildcharm=<C-z>
 cmap :w!! %!sudo tee > /dev/null %
 imap <S-Tab> <C-o><<
+inoreabbrev </ </<C-x><C-o>
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap ( ()<Left>
@@ -87,7 +88,19 @@ nnoremap <leader>X <ESC>:w<CR>:silent :!%:p<CR><CR>
 nnoremap <leader>n :set number! relativenumber!<CR>
 
 " Automatic Commands
-autocmd! BufRead,BufNewFile *.{jsx,jx} setlocal filetype=jsx
-autocmd FileType html,jsx set omnifunc=htmlcomplete#CompleteTags
-"autocmd BufWinLeave *.* mkview
-"autocmd BufWinEnter *.* silent loadview
+if has("autocmd")
+    autocmd! BufRead,BufNewFile *.{jsx,jx} setlocal filetype=jsx
+    autocmd FileType html,jsx set omnifunc=htmlcomplete#CompleteTags
+    "autocmd BufWinLeave *.* mkview
+    "autocmd BufWinEnter *.* silent loadview
+    "augroup html
+    "    autocmd! FileType html inoreabbrev </ </<C-x><C-o>
+    "augroup END
+
+    augroup type_python
+        autocmd!
+        autocmd FileType python nnoremap <leader>x \
+            <ESC>:w<CR>:silent execute "!python3 -i %"<CR><CR>
+        autocmd FileType python vnoremap <leader>x :!python3<CR>
+    augroup END
+endif
