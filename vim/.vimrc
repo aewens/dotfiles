@@ -99,8 +99,8 @@ if has("autocmd")
 
     augroup type_python
         autocmd!
-        autocmd FileType python nnoremap <leader>x \
-            <ESC>:w<CR>:silent execute "!python3 -i %"<CR><CR>
+        autocmd FileType python nnoremap <leader>x
+            \ <ESC>:w<CR>:silent execute "!python3 -i %"<CR><CR>
         autocmd FileType python vnoremap <leader>x :!python3<CR>
     augroup END
 endif
