@@ -90,6 +90,7 @@ nnoremap <leader>n :set number! relativenumber!<CR>
 " Automatic Commands
 if has("autocmd")
     autocmd! BufRead,BufNewFile *.{jsx,jx} setlocal filetype=jsx
+	autocmd FileType jsx set syntax=javascript
     autocmd FileType html,jsx set omnifunc=htmlcomplete#CompleteTags
     "autocmd BufWinLeave *.* mkview
     "autocmd BufWinEnter *.* silent loadview
@@ -103,4 +104,24 @@ if has("autocmd")
             \ <ESC>:w<CR>:silent execute "!python3 -i %"<CR><CR>
         autocmd FileType python vnoremap <leader>x :!python3<CR>
     augroup END
+
+    fu! SaveSess()
+        execute 'mksession! ' . getcwd() . '/.session.vim'
+    endfunction
+
+    fu! RestoreSess()
+        if filereadable(getcwd() . '/.session.vim')
+            execute 'so ' . getcwd() . '/.session.vim'
+            "if bufexists(1)
+            "    for l in range(1, bufnr('$'))
+            "        if bufwinnr(l) == -1
+            "            exec 'badd ' . l
+            "        endif
+            "    endfor
+            "endif
+        endif
+    endfunction
+
+autocmd VimLeave * call SaveSess()
+autocmd VimEnter * nested call RestoreSess()
 endif
