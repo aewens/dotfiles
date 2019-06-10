@@ -64,8 +64,6 @@ inoremap [] []
 inoremap () ()
 inoremap jj <Esc>
 nnoremap JJJJ <Nop>
-nnoremap ii <C-i>
-nnoremap oo <C-o>
 nnoremap gb :bnext<CR>
 nnoremap gB :bprevious<CR>
 nnoremap <leader>l :ls<CR>:b<Space>
