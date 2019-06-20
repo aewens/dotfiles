@@ -56,7 +56,8 @@ set wildcharm=<C-z>
 cmap :w!! %!sudo tee > /dev/null %
 imap <S-Tab> <C-o><<
 inoreabbrev </ </<C-x><C-o>
-inoremap ><Tab> ><Esc>F<lyt<Space>o</<C-r>"><Esc>O<Tab>
+inoremap ><Tab> ><Esc>F<lyiwo</<C-r>"><Esc>O<Tab>
+inoremap >><Tab> ><Esc>F<lyiw$a</<C-r>"><Esc>F<i
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap ( ()<Left>
