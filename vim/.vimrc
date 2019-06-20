@@ -56,6 +56,7 @@ set wildcharm=<C-z>
 cmap :w!! %!sudo tee > /dev/null %
 imap <S-Tab> <C-o><<
 inoreabbrev </ </<C-x><C-o>
+inoremap ><Tab> ><Esc>F<lyt>o</<C-r>"><Esc>O<Tab>
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap ( ()<Left>
@@ -84,12 +85,14 @@ nnoremap <leader>o :set foldmethod=indent<CR>zM
 nnoremap <leader>O :set foldmethod=manual<CR>zR
 nnoremap <leader>X <ESC>:w<CR>:silent :!%:p<CR><CR>
 nnoremap <leader>n :set number! relativenumber!<CR>
+nnoremap <leader>@ :source $MYVIMRC<CR>
 
 " Automatic Commands
 if has("autocmd")
     autocmd! BufRead,BufNewFile *.{jsx,jx} setlocal filetype=jsx
-	autocmd FileType jsx set syntax=javascript
-    autocmd FileType html,jsx set omnifunc=htmlcomplete#CompleteTags
+    autocmd! BufRead,BufNewFile *.conf setlocal filetype=apache
+    autocmd FileType jsx set syntax=javascript
+    autocmd FileType html,jsx,apache set omnifunc=htmlcomplete#CompleteTags
     "autocmd BufWinLeave *.* mkview
     "autocmd BufWinEnter *.* silent loadview
     "augroup html
