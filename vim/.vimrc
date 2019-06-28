@@ -34,6 +34,8 @@ set wildignorecase
 set foldnestmax=10
 set showbreak=↪
 set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+" Defaults = .,w,b,u,t,i : current, windows, buffers, unloaded, tags, included
+set complete=.,w,b,t
 
 " Disable Behavior
 noremap <Up> <Nop>
@@ -61,9 +63,11 @@ inoremap >><Tab> ><Esc>F<lv/\s\\|><CR>hy$a</<C-r>"><Esc>F<i
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap ( ()<Left>
+inoremap " ""<Left>
 inoremap {} {}
 inoremap [] []
 inoremap () ()
+inoremap "" ""
 inoremap jj <Esc>
 nnoremap JJJJ <Nop>
 nnoremap gb :bnext<CR>
