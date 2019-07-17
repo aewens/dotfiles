@@ -69,6 +69,7 @@ inoremap [] []
 inoremap () ()
 inoremap "" ""
 inoremap jj <Esc>
+inoremap <Esc> <Nop>
 nnoremap JJJJ <Nop>
 nnoremap gb :bnext<CR>
 nnoremap gB :bprevious<CR>
@@ -131,3 +132,13 @@ if has("autocmd")
 autocmd VimLeave * call SaveSess()
 autocmd VimEnter * nested call RestoreSess()
 endif
+
+" Leave insert mode quickly
+""if ! has("gui_running")
+""    set ttimeout ttimeoutlen=10
+""    augroup FastEscape
+""        autocmd!
+""        au InsertEnter * set timeoutlen=10
+""        au InsertLeave * set timeoutlen=1000
+""    augroup END
+""endif
