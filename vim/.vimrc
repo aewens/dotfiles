@@ -46,7 +46,6 @@ nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
-nnoremap <F1> <Nop>
 
 " Remap Keys
 let mapleader = " "
@@ -69,7 +68,6 @@ inoremap [] []
 inoremap () ()
 inoremap "" ""
 inoremap jj <Esc>
-inoremap <Esc> <Nop>
 nnoremap JJJJ <Nop>
 nnoremap gb :bnext<CR>
 nnoremap gB :bprevious<CR>
