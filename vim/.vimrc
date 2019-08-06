@@ -36,6 +36,7 @@ set showbreak=↪
 set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 " Defaults = .,w,b,u,t,i : current, windows, buffers, unloaded, tags, included
 set complete=.,w,b,t
+set backspace=indent,eol,start
 
 " Disable Behavior
 noremap <Up> <Nop>
@@ -59,6 +60,7 @@ imap <S-Tab> <C-o><<
 inoreabbrev </ </<C-x><C-o>
 inoremap ><Tab> ><Esc>F<lv/\s\\|><CR>hyo</<C-r>"><Esc>O<Tab>
 inoremap >><Tab> ><Esc>F<lv/\s\\|><CR>hy$a</<C-r>"><Esc>F<i
+inoremap # X#
 inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap ( ()<Left>
