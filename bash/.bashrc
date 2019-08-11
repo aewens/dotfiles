@@ -26,6 +26,7 @@ if ! shopt -oq posix; then
 fi
 
 export EDITOR=vim
+export VISUAL=vim
 if [ $TERM == "screen" ]; then
     export TERM=screen-256color
 fi

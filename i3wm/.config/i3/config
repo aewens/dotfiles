@@ -211,9 +211,13 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# Setting brightness keys
+bindsym XF86MonBrightnessUp exec /home/aewens/.scripts/brightness up
+bindsym XF86MonBrightnessDown exec /home/aewens/.scripts/brightness down
+
 # Setting lockscreen
-# bindsym $mod+Shift+x exec i3lock --color 475263
-bindsym $mod+Shift+x exec ~/.scripts/lockscreen ~/Pictures/icons/lock.png
+bindsym $mod+Shift+x exec i3lock --color 475263
+# bindsym $mod+Shift+x exec ~/.scripts/lockscreen ~/Pictures/icons/lock.png
 
 # App Launcher
 bindsym $mod+x exec rofi -show run -config ~/.config/rofi

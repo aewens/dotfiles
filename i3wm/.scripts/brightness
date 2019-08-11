@@ -1,0 +1,17 @@
+#!/bin/bash
+
+CURRENT=$(xbacklight -get)
+
+case $1 in
+    "up")
+        xbacklight -inc 10%
+        ;;
+    "down")
+        if [ "${CURRENT%.*}" -gt "10" ]; then
+            xbacklight -dec 10%
+        else
+            xbacklight -set 0
+        fi
+        ;;
+    *)
+esac

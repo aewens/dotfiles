@@ -36,6 +36,7 @@ set showbreak=↪
 set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 " Defaults = .,w,b,u,t,i : current, windows, buffers, unloaded, tags, included
 set complete=.,w,b,t
+"set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 
 " Disable Behavior
 noremap <Up> <Nop>
