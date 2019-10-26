@@ -1,0 +1,3 @@
+#!/bin/bash
+
+wget --convert-links -p -P ~/Downloads/offline-pages/ $1

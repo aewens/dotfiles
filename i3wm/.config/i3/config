@@ -301,9 +301,9 @@ exec --no-startup-id i3-msg 'workspace $ws4; exec i3-sensible-terminal'
 exec_always --no-startup-id feh --bg-scale /home/aewens/.wallpaper
 exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id xmodmap ~/.Xmodmap
-exec_always xinput set-prop 12 285 1
-exec_always xinput set-prop 12 287 1
-exec_always xinput set-prop 12 293 1
+exec_always --no-startup-id xinput set-prop 12 286 1
+exec_always --no-startup-id xinput set-prop 12 288 1
+exec_always --no-startup-id xinput set-prop 12 294 1
 exec xset s off
 exec xset -dpms
 exec compton -ff
