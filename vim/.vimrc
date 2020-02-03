@@ -38,6 +38,7 @@ set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 set complete=.,w,b,t
 "set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 set backspace=indent,eol,start
+set nohlsearch
 
 " Disable Behavior
 noremap <Up> <Nop>
@@ -87,11 +88,12 @@ nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
-nnoremap <leader>c :nohlsearch<CR><Esc>
+nnoremap <leader>h :nohlsearch<CR><Esc>
 nnoremap <leader>o :set foldmethod=indent<CR>zM
 nnoremap <leader>O :set foldmethod=manual<CR>zR
 nnoremap <leader>X <ESC>:w<CR>:silent :!%:p<CR><CR>
 nnoremap <leader>n :set number! relativenumber!<CR>
+nnoremap <leader>c :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
 nnoremap <leader>@ :source $MYVIMRC<CR>
 
 " Automatic Commands
@@ -100,6 +102,7 @@ if has("autocmd")
     autocmd! BufRead,BufNewFile *.conf setlocal filetype=apache
     autocmd FileType jsx set syntax=javascript
     autocmd FileType html,jsx,apache set omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType cv-python set syntax=python
     "autocmd BufWinLeave *.* mkview
     "autocmd BufWinEnter *.* silent loadview
     "augroup html
