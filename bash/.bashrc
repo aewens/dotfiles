@@ -37,6 +37,10 @@ N="${C}m\]"
 export PS1="${C}0;97m\]\u@\h :: \A :: [ ${C}1;36m\]\w${C}0;97m\] ]\n\$ ${N}"
 export PATH=$HOME/.bin:$PATH
 
+if [ -d /usr/local/go/bin ]; then
+    export PATH=$PATH:/usr/local/go/bin
+fi
+
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi

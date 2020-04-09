@@ -54,8 +54,8 @@ nnoremap <Right> <Nop>
 let mapleader = " "
 set spell
 set spelllang=en_us
-set path=.,**
 set pastetoggle=<F2>
+set path=.,**
 set wildcharm=<C-z>
 cmap :w!! %!sudo tee > /dev/null %
 imap <S-Tab> <C-o><<
@@ -123,18 +123,11 @@ if has("autocmd")
     fu! RestoreSess()
         if filereadable(getcwd() . '/.session.vim')
             execute 'so ' . getcwd() . '/.session.vim'
-            "if bufexists(1)
-            "    for l in range(1, bufnr('$'))
-            "        if bufwinnr(l) == -1
-            "            exec 'badd ' . l
-            "        endif
-            "    endfor
-            "endif
         endif
     endfunction
 
-autocmd VimLeave * call SaveSess()
-autocmd VimEnter * nested call RestoreSess()
+    autocmd VimLeave * call SaveSess()
+    autocmd VimEnter * nested call RestoreSess()
 endif
 
 " Leave insert mode quickly
