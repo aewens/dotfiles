@@ -235,6 +235,9 @@ bindsym --release $mod+Shift+Print exec scrot -s $HOME/Pictures/Screenshots/`dat
 bindsym $mod+Shift+a exec --no-startup-id pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
 bindsym $mod+Shift+s exec --no-startup-id pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo
 
+# Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 set $mode_gaps Gaps: (o) outer, (i) inner, t (toggle), r (reset), Shift+r (reset all)
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -310,3 +313,6 @@ exec compton -ff
 
 #exec thunar
 #exec google-chrome
+
+for_window [instance="__scratchpad"] move scratchpad 
+exec --no-startup-id exec i3-sensible-terminal -name __scratchpad
