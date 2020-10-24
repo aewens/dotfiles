@@ -315,7 +315,7 @@ exec_always --no-startup-id xinput set-prop 12 288 1
 exec_always --no-startup-id xinput set-prop 12 294 1
 exec xset s off
 exec xset -dpms
-exec compton -ff
+exec compton -f -i 1
 
 #exec thunar
 #exec google-chrome
