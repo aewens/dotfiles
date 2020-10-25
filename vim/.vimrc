@@ -98,11 +98,15 @@ nnoremap <leader>@ :source $MYVIMRC<CR>
 
 " Automatic Commands
 if has("autocmd")
+    autocmd! BufRead,BufNewFile *.go setlocal filetype=go
+    autocmd! BufRead,BufNewFile *.vue setlocal filetype=vue
     autocmd! BufRead,BufNewFile *.{jsx,jx} setlocal filetype=jsx
     autocmd! BufRead,BufNewFile *.conf setlocal filetype=apache
-    autocmd FileType jsx set syntax=javascript
-    autocmd FileType html,jsx,apache set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType cv-python set syntax=python
+    autocmd FileType jsx setlocal syntax=javascript
+    autocmd FileType vue setlocal syntax=html
+    autocmd FileType html,vue,jsx,apache setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType cv-python setlocal syntax=python
+    autocmd FileType go setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
     "autocmd BufWinLeave *.* mkview
     "autocmd BufWinEnter *.* silent loadview
     "augroup html
