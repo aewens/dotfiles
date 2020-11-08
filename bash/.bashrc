@@ -50,7 +50,13 @@ if [ -d /usr/local/go/bin ]; then
     export PATH=$PATH:$(go env GOPATH)/bin
 fi
 
-export PATH=$HOME/.bin:$PATH
+if [ -d $HOME/.scripts ]; then
+    export PATH=$HOME/.scripts:$PATH
+fi
+
+if [ -d $HOME/.bin ]; then
+    export PATH=$HOME/.bin:$PATH
+fi
 
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
