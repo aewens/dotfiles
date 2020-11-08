@@ -1,0 +1,33 @@
+#!/bin/bash
+
+HDMI_CARD="pci-0000_00_03.0"
+HDMI_PRFL="hdmi-stereo-extra1"
+
+SELF_CARD="pci-0000_00_1b.0"
+SELF_PRFL="analog-stereo"
+
+pactl set-card-profile "alsa_card.${HDMI_CARD}" "output:${HDMI_PRFL}"
+pactl set-card-profile "alsa_card.${SELF_CARD}" "output:${SELF_PRFL}"
+
+case $1 in
+    hdmi)
+        CARD=$HDMI_CARD
+        PRFL=$HDMI_PRFL
+        ;;
+
+    self)
+        CARD=$SELF_CARD
+        PRFL=$SELF_PRFL
+        ;;
+    *)
+        CARD=$SELF_CARD
+        PRFL=$SELF_PRFL
+        ;;
+esac
+
+OUTPUT="alsa_output.${CARD}.${PRFL}"
+pacmd set-default-sink "$OUTPUT" #&> /dev/null
+
+for i in $(pacmd list-sink-inputs | grep index | awk '{print $2}'); do
+    pacmd move-sink-input "$i" "$OUTPUT" #&> /dev/null
+done

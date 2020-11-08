@@ -238,13 +238,20 @@ bindsym $mod+Print exec scrot -u $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%
 bindsym --release $mod+Shift+Print exec scrot -s $HOME/Pictures/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
 
 # Reset audio
-bindsym $mod+Shift+a exec --no-startup-id pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
-bindsym $mod+Shift+s exec --no-startup-id pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo
+#bindsym $mod+Shift+a exec --no-startup-id pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
+#bindsym $mod+Shift+s exec --no-startup-id pactl set-card-profile 0 output:hdmi-stereo+input:analog-stereo
+bindsym $mod+Shift+a exec --no-startup-id $HOME/.scripts/migrate_audio self
+bindsym $mod+Shift+s exec --no-startup-id $HOME/.scripts/migrate_audio hdmi
 
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
+# Multiple monitors
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
+
+# Controls for i3-gaps
 set $mode_gaps Gaps: (o) outer, (i) inner, t (toggle), r (reset), Shift+r (reset all)
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -313,9 +320,9 @@ exec_always --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id xinput set-prop 12 286 1
 exec_always --no-startup-id xinput set-prop 12 288 1
 exec_always --no-startup-id xinput set-prop 12 294 1
+exec_always --no-startup-id compton -f -i 1
 exec xset s off
 exec xset -dpms
-exec compton -f -i 1
 
 #exec thunar
 #exec google-chrome
