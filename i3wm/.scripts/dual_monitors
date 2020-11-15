@@ -1,3 +1,13 @@
 #!/bin/bash
 
-xrandr --output eDP1 --auto --output HDMI2 --auto --right-of eDP1 | tee -a $HOME/.xrandr.log
+case $1 in
+    on)
+        xrandr --output eDP1 --auto --primary --output HDMI2 --auto --right-of eDP1 2>&1 | tee -a $HOME/.xrandr.log
+        ;;
+    off)
+        xrandr --auto 2>&1 | tee -a $HOME/.xrandr.log
+        ;;
+    *)
+        echo "Use 'on' or 'off'"
+        ;;
+esac

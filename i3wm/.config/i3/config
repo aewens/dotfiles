@@ -250,6 +250,8 @@ bindsym $mod+minus scratchpad show
 # Multiple monitors
 bindsym $mod+Shift+greater move container to output right
 bindsym $mod+Shift+less move container to output left
+bindsym $mod+Shift+question move container to output primary
+
 
 # Controls for i3-gaps
 set $mode_gaps Gaps: (o) outer, (i) inner, t (toggle), r (reset), Shift+r (reset all)
