@@ -42,12 +42,16 @@ fi
 
 if [ -d /usr/local/go/bin ]; then
     export PATH=/usr/local/go/bin:$PATH
+fi
 
+HAS_GO=$(which go)
+if [ -f "${HAS_GO}" ]; then
     if [ -d /var/proto/go ]; then
         export GOPATH=/var/proto/go
     fi
 
     export PATH=$PATH:$(go env GOPATH)/bin
+
 fi
 
 if [ -d $HOME/.scripts ]; then
