@@ -3,6 +3,10 @@ shopt -s histappend
 HISTSIZE=HISTFILESIZE
 HISTCONTROL=ignoreboth
 
+export XDG_CONFIG_HOME=$HOME/.config
+
+mkdir -p $XDG_CONFIG_HOME
+
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 alias svim="sudo vim"
