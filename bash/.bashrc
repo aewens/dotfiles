@@ -46,6 +46,12 @@ export PS1="${C}0;97m\]\u@\h :: \A :: [ ${C}1;36m\]\w${C}0;97m\] ]\n\$ ${N}"
 #    export PATH=$(yarn global bin):$PATH
 #fi
 
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+
 if [ -d /usr/local/go/bin ]; then
     export PATH=/usr/local/go/bin:$PATH
 fi
@@ -72,3 +78,20 @@ fi
 if [ -f ~/.bashrc.local ]; then
     . ~/.bashrc.local
 fi
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
