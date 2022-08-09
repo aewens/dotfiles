@@ -9,13 +9,15 @@ mkdir -p $XDG_CONFIG_HOME
 
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-alias svim="sudo vim"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+alias svim="sudo vim"
+alias code="vim -u ~/.vim/project.vim"
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
