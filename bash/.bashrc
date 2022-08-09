@@ -42,9 +42,9 @@ N="${C}m\]"
 
 export PS1="${C}0;97m\]\u@\h :: \A :: [ ${C}1;36m\]\w${C}0;97m\] ]\n\$ ${N}"
 
-if [ -x "$(command -v yarn)" ]; then
-    export PATH=$(yarn global bin):$PATH
-fi
+#if [ -x "$(command -v yarn)" ]; then
+#    export PATH=$(yarn global bin):$PATH
+#fi
 
 if [ -d /usr/local/go/bin ]; then
     export PATH=/usr/local/go/bin:$PATH
@@ -54,6 +54,7 @@ HAS_GO=$(which go)
 if [ -f "${HAS_GO}" ]; then
     if [ -d /var/proto/go ]; then
         export GOPATH=/var/proto/go
+        export GOHOME=$GOPATH/src/github.com/aewens
     fi
 
     export PATH=$PATH:$(go env GOPATH)/bin
