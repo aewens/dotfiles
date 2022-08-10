@@ -1,3 +1,5 @@
+set nocp
+
 " Solarized theme
 set background=dark
 let g:solarized_termcolors=256
