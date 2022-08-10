@@ -56,7 +56,7 @@ if [ -d /usr/local/go/bin ]; then
     export PATH=/usr/local/go/bin:$PATH
 fi
 
-HAS_GO=$(which go)
+HAS_GO=$(which go 2>/dev/null)
 if [ -f "${HAS_GO}" ]; then
     if [ -d /var/proto/go ]; then
         export GOPATH=/var/proto/go
