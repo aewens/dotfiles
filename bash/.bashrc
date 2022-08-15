@@ -1,4 +1,4 @@
-stty -ixon
+[[ $- == *i* ]] && stty -ixon
 shopt -s histappend
 HISTSIZE=HISTFILESIZE
 HISTCONTROL=ignoreboth
