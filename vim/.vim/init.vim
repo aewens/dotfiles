@@ -11,7 +11,7 @@ colorscheme solarized
 syntax enable
 set number relativenumber
 set colorcolumn=81
-highlight ColorColumn ctermbg=grey
+" highlight ColorColumn ctermbg=grey
 highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%81v.\+/
 highlight LineNr ctermbg=NONE
