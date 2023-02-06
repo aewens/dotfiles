@@ -1,3 +1,5 @@
+set nocp
+
 " Solarized theme
 set background=dark
 let g:solarized_termcolors=256
@@ -9,7 +11,7 @@ colorscheme solarized
 syntax enable
 set number relativenumber
 set colorcolumn=81
-highlight ColorColumn ctermbg=grey
+"highlight ColorColumn ctermbg=grey
 highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%81v.\+/
 highlight LineNr ctermbg=NONE
@@ -35,7 +37,8 @@ set foldnestmax=10
 set showbreak=↪
 set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 " Defaults = .,w,b,u,t,i : current, windows, buffers, unloaded, tags, included
-set complete=.,w,b,t
+"set complete=.,w,b,u,t,i
+set complete=.,w,b,u,t
 "set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 set backspace=indent,eol,start
 set nohlsearch
@@ -75,6 +78,7 @@ inoremap () ()
 inoremap "" ""
 inoremap jj <Esc>
 nnoremap JJJJ <Nop>
+nnoremap & :&&<CR>
 nnoremap gb :bnext<CR>
 nnoremap gB :bprevious<CR>
 nnoremap <leader>l :ls<CR>:b<Space>
