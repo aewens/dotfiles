@@ -65,8 +65,8 @@ imap <S-Tab> <C-o><<
 inoreabbrev </ </<C-x><C-o>
 inoremap ><Tab> ><C-\><C-o>m`a</<C-x><C-o><C-r>=get(v:completed_item, 'word', '>') ==# '>' ? "\<lt>C-u>" : ''<CR><Esc>``xi<CR><CR><Esc>ki<Tab>
 inoremap >><Tab> ><C-\><C-o>m`a</<C-x><C-o><C-r>=get(v:completed_item, 'word', '>') ==# '>' ? "\<lt>C-u>" : ''<CR><Esc>``xi
-""inoremap ><Tab> ><Esc>F<lv/\s\\|><CR>hyo</<C-r>"><Esc>O<Tab>
-""inoremap >><Tab> ><Esc>F<lv/\s\\|><CR>hy$a</<C-r>"><Esc>F<i
+"inoremap ><Tab> ><Esc>F<lv/\s\\|><CR>hyo</<C-r>"><Esc>O<Tab>
+"inoremap >><Tab> ><Esc>F<lv/\s\\|><CR>hy$a</<C-r>"><Esc>F<i
 inoremap # X#
 inoremap { {}<Left>
 inoremap [ []<Left>
