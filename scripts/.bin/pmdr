@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+
+import sys
+from pathlib import Path
+
+ABOTS_ROOT = Path("~/code/abots").expanduser()
+sys.path.insert(0, str(ABOTS_ROOT))
+
+from abots import (
+    quit,
+    capitalize,
+    load_env,
+    push_notification
+)
+
+from sys import stdin
+from time import sleep
+from os import getenv
+from subprocess import Popen, PIPE
+from shlex import split
+
+MINUTE = 60
+
+def run(command, data=None):
+    proc = Popen(split(command), stdin=PIPE, stdout=PIPE, stderr=PIPE)
+    if data is not None:
+        if isinstance(data, str):
+            data = data.encode()
+
+        proc.stdin.write(data)
+
+    return proc
+
+def notify(message):
+    run(f"notify-send '{message}'")
+
+    key = getenv("PRIVATE_TOKEN")
+    err, res = push_notification("Pomodoro Timer", message)
+    if err:
+        quit(res)
+
+def main():
+    err, res = load_env(ABOTS_ROOT)
+    if err:
+        quit(res)
+
+    count = 0
+    state = "work"
+    zzz = 25
+
+    remap = dict()
+    remap["work"] = "break"
+    remap["break"] = "work"
+
+    while True:
+        notify(f"{capitalize(state)} - {zzz}m (cycle {count+1})")
+        sleep(zzz * MINUTE)
+
+        state = remap[state]
+        if state == "work":
+            zzz = 25
+            count = count + 1
+
+        if state == "break":
+            zzz = 5 if (count+1)%4 != 0 else 30
+
+if __name__ == "__main__":
+    main()
