@@ -42,6 +42,7 @@ set complete=.,w,b,u,t
 "set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
 set backspace=indent,eol,start
 set nohlsearch
+set shortmess=atoO
 
 " Disable Behavior
 noremap <Up> <Nop>
