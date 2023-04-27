@@ -13,13 +13,42 @@ from abots import (
     push_notification
 )
 
-from sys import stdin
+from sys import stdin, exit
 from time import sleep
 from os import getenv
 from subprocess import Popen, PIPE
 from shlex import split
+from datetime import datetime
+from argparse import ArgumentParser
 
 MINUTE = 60
+PROG = "pmdr"
+
+def arguments():
+    parser = ArgumentParser(PROG)
+    parser.add_argument(
+        "-c", "--cycle",
+        dest="cycle",
+        metavar="CYCLE",
+        nargs="?",
+        default=0,
+        type=int,
+        help="What cycle to start with"
+    )
+    parser.add_argument(
+        "-s", "--state",
+        dest="state",
+        default="work",
+        choices=["work", "break"],
+        help="What state to start with (default: work)"
+    )
+    parser.add_argument(
+        "-k", "--keep-alive",
+        dest="keep_alive",
+        action="store_true",
+        help="Do not kill process at 6pm"
+    )
+    return parser.parse_args()
 
 def run(command, data=None):
     proc = Popen(split(command), stdin=PIPE, stdout=PIPE, stderr=PIPE)
@@ -32,6 +61,9 @@ def run(command, data=None):
     return proc
 
 def notify(message):
+    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+    print(f"{now} | {message}")
+
     run(f"notify-send '{message}'")
 
     key = getenv("PRIVATE_TOKEN")
@@ -44,8 +76,10 @@ def main():
     if err:
         quit(res)
 
-    count = 0
-    state = "work"
+    args = arguments()
+
+    count = args.cycle
+    state = args.state
     zzz = 25
 
     remap = dict()
@@ -53,6 +87,10 @@ def main():
     remap["break"] = "work"
 
     while True:
+        if not args.keep_alive and datetime.now().hour >= 12+6:
+            notify("Stopping timer")
+            exit(0)
+
         notify(f"{capitalize(state)} - {zzz}m (cycle {count+1})")
         sleep(zzz * MINUTE)
 

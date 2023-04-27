@@ -16,6 +16,17 @@ highlight OverLength ctermbg=red ctermfg=white
 match OverLength /\%81v.\+/
 highlight LineNr ctermbg=NONE
 
+let s:activatedh = 1
+function! ToggleH()
+    if s:activatedh == 0
+        let s:activatedh = 1
+        match OverLength /\%81v.\+/
+    else
+        let s:activatedh = 0
+        match none
+    endif
+endfunction
+
 " Change behaviors
 filetype plugin on
 set encoding=utf-8
@@ -96,6 +107,7 @@ nnoremap <leader>S :sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>V :vert sfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>T :tabfind <C-R>=expand('%:h').'/*'<CR>
 nnoremap <leader>h :nohlsearch<CR><Esc>
+nnoremap <leader>H :call ToggleH()<CR>
 nnoremap <leader>o :set foldmethod=indent<CR>zM
 nnoremap <leader>O :set foldmethod=manual<CR>zR
 nnoremap <leader>X <ESC>:w<CR>:silent :!%:p<CR><CR>
