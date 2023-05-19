@@ -1,6 +1,7 @@
 set nocp
 
 " Solarized theme
+set term=xterm-256color
 set background=dark
 let g:solarized_termcolors=256
 let g:solarized_degrade=1
