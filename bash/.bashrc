@@ -4,6 +4,8 @@ HISTSIZE=HISTFILESIZE
 HISTCONTROL=ignoreboth
 
 export XDG_CONFIG_HOME=$HOME/.config
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 mkdir -p $XDG_CONFIG_HOME
 
@@ -15,6 +17,7 @@ alias l='ls -CF'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias tmux='tmux -u'
 
 alias svim="sudo vim"
 alias code="vim -u ~/.vim/project.vim"
@@ -34,7 +37,7 @@ fi
 export EDITOR=vim
 export VISUAL=vim
 if [ $TERM == "screen" ]; then
-  export TERM=screen-256color
+  export TERM=xterm-256color
 fi
 
 C="\[\033["
